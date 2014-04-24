@@ -36,7 +36,7 @@ class Thing : public Component {
 class What : public Component {
 	public:
 		What() {cout<<"new What created\n";}
-}
+};
 
 //
 //a basic entity component
