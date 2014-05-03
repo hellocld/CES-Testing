@@ -9,12 +9,15 @@
 #ifndef SYSTEM_H
 #define SYSTEM_H
 
+//might be a better way to do this
+#include "library.h"
+
 namespace CLD_CES { 
 	class System {
 		public:
 		System() {};
 		virtual ~System() = default;
-		void init()
+		void init();
 		void update();
 		
 		private:

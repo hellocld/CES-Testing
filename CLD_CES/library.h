@@ -8,7 +8,13 @@
  
 #ifndef LIBRARY_H
 #define LIBRARY_H
- 
+
+//might be a better way to do this
+#include <typeinfo>
+#include <unordered_map>
+#include <vector>
+#include "component.h"
+
 namespace CLD_CES {
 	class Library {
 		public:
@@ -24,16 +30,16 @@ namespace CLD_CES {
 		template <typename T> T* getComponent(int e);
 		
 		//find all entities containing component type T
-		template <typename T> vector<int> getEntitiesWithComponent();
+		template <typename T> std::vector<int> getEntitiesWithComponent();
 		
 		
 		private:
 		//the unordered map that stores all entities and components
-		unordered_map<int, unordered_map<const type_info *, Component *>> lib;
+		std::unordered_map<int, std::unordered_map<const std::type_info *, Component *>> lib;
 		
 		int entity_index = 0;
 		
-		vector<int> entity_buffer;
+		std::vector<int> entity_buffer;
 		
 		
 	};

@@ -11,6 +11,7 @@
 #include <vector>
 #include <iostream>
 #include "library.h"
+#include "component.h"
 
 using namespace CLD_CES;
 
@@ -32,13 +33,14 @@ int Library::createEntity() {
 }
 //---------------------------------------------------------------------
 
-void Library::destroyEntity(int e) {
+bool Library::destroyEntity(int e) {
 	//if the entity e exists, it is erased from lib
 	if(lib.count(e) != 0) {
 		lib.erase(e);
 		entity_buffer.push_back(e);
+		return true;
 	} else {
-		std::cout<<"destroyEntity error: entity "<<e<<" does not exist!\n";
+		return false;
 	}
 }
 
@@ -48,7 +50,7 @@ bool Library::addComponent(int e, Component * c) {
 	if(lib.count(e) != 0) {
 		//if e is found, add this new component (key and value) to
 		//it's component unordered_map
-		lib[e][&typeid* c] = c;
+		lib[e][&typeid(*c)] = c;
 		return true;
 	} else {
 		return false;
@@ -61,7 +63,7 @@ template <typename T> bool Library::removeComponent(int e) {
 	if(lib.count(e) != 0) {
 		//if lib[e] contains a key of type T, remove the entry
 		if(lib[e].count(&typeid(T)) != 0) {
-			lib[e].erase(&typeid* T);
+			lib[e].erase(&typeid(T));
 		} else {
 			return false;
 		}
@@ -86,10 +88,10 @@ template <typename T> T* Library::getComponent(int e) {
  
 //---------------------------------------------------------------------
 
-template <typename T> vector<int> Library::getEntitiesWithComponent() {
+template <typename T> std::vector<int> Library::getEntitiesWithComponent() {
 	//this might be a bit computationally expensive
 	
-	vector<int> entities;
+	std::vector<int> entities;
 	
 	//iterate through lib
 	for(auto i = lib.begin(); i != lib.end(); ++i) {
