@@ -23,14 +23,14 @@ int Library::createEntity() {
 		//if the buffer is empty, return the current index and increase it by 1
 		e = entity_index;
 		entity_index++;
-		return e;
 	} else {
 		//otherwise get the last element from the buffer
 		e = entity_buffer.back();
 		entity_buffer.pop_back();
-		return e;
 	}
+	return e;
 }
+//---------------------------------------------------------------------
 
 void Library::destroyEntity(int e) {
 	//if the entity e exists, it is erased from lib
@@ -41,6 +41,8 @@ void Library::destroyEntity(int e) {
 		std::cout<<"destroyEntity error: entity "<<e<<" does not exist!\n";
 	}
 }
+
+//---------------------------------------------------------------------
 
 bool Library::addComponent(int e, Component * c) {
 	if(lib.count(e) != 0) {
@@ -53,6 +55,8 @@ bool Library::addComponent(int e, Component * c) {
 	}
 }
  
+//---------------------------------------------------------------------
+
 template <typename T> bool Library::removeComponent(int e) {
 	if(lib.count(e) != 0) {
 		//if lib[e] contains a key of type T, remove the entry
@@ -66,6 +70,8 @@ template <typename T> bool Library::removeComponent(int e) {
 	}
 }
  
+//---------------------------------------------------------------------
+
 template <typename T> T* Library::getComponent(int e) {
 	if(lib.count(e) != 0) {
 		if(lib[e].count(&typeid(T)) != 0) {
@@ -78,8 +84,23 @@ template <typename T> T* Library::getComponent(int e) {
 	}
 }
  
-template <typename T> int[] Library::getEntitiesWithComponent() {
-	//this is scary 
+//---------------------------------------------------------------------
+
+template <typename T> vector<int> Library::getEntitiesWithComponent() {
+	//this might be a bit computationally expensive
+	
+	vector<int> entities;
+	
+	//iterate through lib
+	for(auto i = lib.begin(); i != lib.end(); ++i) {
+		//if i->second (the components unordered_map) contains a key of 
+		//type T, add i->first (the entity ID/key) to the entities vector
+		if(i->second.count(&typeid(T)) != 0) {
+			entities.push_back(i->first);
+		}
+	}
+	
+	return entities;
 }
 
  

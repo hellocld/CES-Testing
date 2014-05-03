@@ -24,7 +24,7 @@ namespace CLD_CES {
 		template <typename T> T* getComponent(int e);
 		
 		//find all entities containing component type T
-		template <typename T> int[] getEntitiesWithComponent();
+		template <typename T> vector<int> getEntitiesWithComponent();
 		
 		
 		private:
@@ -34,6 +34,7 @@ namespace CLD_CES {
 		int entity_index = 0;
 		
 		vector<int> entity_buffer;
+		
 		
 	};
 }
