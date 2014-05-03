@@ -9,10 +9,12 @@
 #ifndef COMPONENT_H
 #define COMPONENT_H
 
-class Component {
-	public:
-	Component () {};
-	virtual ~Component() = default;
-};
+namespace CLD_CES {
+	class Component {
+		public:
+		Component () {};
+		virtual ~Component() = default;
+	};
+}
 
 #endif
