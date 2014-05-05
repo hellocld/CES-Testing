@@ -16,7 +16,8 @@ namespace CLD_CES {
 		public:
 			System() {};
 			virtual ~System() = default;
-			void init();
+			//upon initialization ALL Systems must be told what Library they are working with
+			void init(Library* l);
 			void update();
 
 		protected:
