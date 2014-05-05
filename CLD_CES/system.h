@@ -19,7 +19,7 @@ namespace CLD_CES {
 			void init();
 			void update();
 
-		private:
+		protected:
 			//reference to the Library in the World containing this system
 			Library* lib;
 	};
