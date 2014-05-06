@@ -58,7 +58,18 @@ int Library::createEntity() {
  */
 
 bool Library::destroyEntity(int e) {
+	//look in entities to see if there's a key that matches e
+	if(entities.count(e) != 0) {
+		//destroy the key and associated value
+		entities.erase(e);
+		//since e is now an unused ID, push it back into entity_buffer for reuse
+		entity_buffer.push_back(e);
 
+		return true;
+	} else {
+		//e was not a valid ID
+		return false;
+	}
 }
 
 //---------------------------------------------------------------------------------------
@@ -74,7 +85,20 @@ bool Library::destroyEntity(int e) {
  */
 
 bool Library::addComponent(int e, Component* c) {
-
+	//check if e is a valid Entity ID
+	if(entities.count(e) != 0) {
+		//make sure the Entity doesn't already contain a Component of c's type
+		if(entities[e].count(&typeid(*c)) != 0) {
+			//ERROR: Entity e has a Component of c's type already
+			return false;
+		} else {
+			//add the Component with it's typeid as the key
+			entities[e][&typeid(*c)] = c;
+		}
+	} else {
+		//ERROR: e is not a valid Entity ID
+		return false;
+	}
 }
 
 //---------------------------------------------------------------------------------------
@@ -90,7 +114,21 @@ bool Library::addComponent(int e, Component* c) {
  */
 
 template <typename T> bool Library::removeComponent(int e) {
-
+	//check to see if Entity e exists
+	if(entities.count(e) != 0) {
+		//check for the Component
+		if(entities[e].count(&typeid(*c)) != 0) {
+			//it exists, so remove the Component
+			entities[e].erase(&typeid(*c));
+			return true;
+		} else {
+			//the Component was not found
+			return false;
+		}
+	} else {
+		//ERROR: e is not a valid Entity ID
+		return false;
+	}
 }
 
 //---------------------------------------------------------------------------------------
@@ -106,7 +144,18 @@ template <typename T> bool Library::removeComponent(int e) {
  */
 
 template <typename T> T* Library::getComponent(int e) {
-
+	if(entities.count(e) != 0) {
+		if(entities[e].count(&typeid(*c)) != 0) {
+			//return a pointer to the Component
+			return static_cast<T*>(entities[e][&typeid(*c)]);
+		} else {
+			//ERROR: no such Component exists in Entity e
+			return nullptr;
+		}
+	} else {
+		//ERROR: no such Entity exists
+		return nullptr;
+	}
 }
 
 //---------------------------------------------------------------------------------------
@@ -122,21 +171,33 @@ template <typename T> T* Library::getComponent(int e) {
  */
 
 template <typename T> bool Library::hasComponent(int e) {
+	if(entities.count(e) != 0) {
+		if(entities[e].count(&typeid(*c)) != 0) {
+			return true;
+		}
+	}
 
+	return false;
 }
 
 //---------------------------------------------------------------------------------------
 
 /*
- * Function:		getAllEntitiesWithComponent()
- * Description:		Returns a vector of all Entities (by ID) containing a Component of
- * 			type T.
- * Arguments:
- * 	typename T:	Component type to find
+ * Function:		allEntityIDs()
+ * Description:		Returns a list (vector) of all Entity IDs in the Library
+ * Arguments:		none
  * Returns:
- * 	vector<int>:	A vector of Entity IDs
+ * 	vector<int>:	A list of all Entity IDs in the Library
  */
 
-template <typename T> std::vector<int> Library::getAllEntitiesWithComponent() {
+std::vector<int> allEntityIDs() {
+	//an empty vector to fill with Entity IDs
+	std::vector<int> id;
 
+	//iterate through the keys in entities, pushing each one into id
+	for(auto i = entities.begin(); i != entities.end(); ++i) {
+		id.push_back(i);
+	}
+
+	return id;
 }
