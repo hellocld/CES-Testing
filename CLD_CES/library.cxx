@@ -19,10 +19,7 @@ using namespace CLD_CES;
 
 /*
  * Function:		createEntity()
- * Description:		Makes a new entry in the Entities unordered_map, allowing for the
- * 			addition of Components to said Entity. Increases entity_index by
- * 			one if entity_buffer is empty; otherwise uses last entry in
- * 			entity_buffer.
+ * Description:		Creates a new Entity ID, or recycles an unused one
  * Arguments:		none
  * Returns:		
  * 	int:		New/recycled Entity ID
