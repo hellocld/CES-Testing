@@ -33,8 +33,8 @@ namespace CLD_CES {
 			//returns true if entity contains component type T (useful for checking if an entity contains a set of components)
 			template <typename T> bool hasComponent(int e);
 
-			//get all entities with component type T
-			template <typename T> std::vector<int> getAllEntitiesWithComponent();
+			//provide a vector of all Entity IDs currently in use (the keys of entities)
+			std::vector<int> allEntityIDs();
 
 		private:
 			//an unordered map that stores all entities
