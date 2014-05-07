@@ -24,7 +24,7 @@ namespace CLD_CES {
 			virtual ~World() = default;
 
 			//add or remove a System to the world
-			void addSystem(System s);
+			void addSystem(System* s);
 			template <typename T> void removeSystem();
 
 			//run init() or update() on all Systems
@@ -36,7 +36,7 @@ namespace CLD_CES {
 			Library library;
 
 			//vector to store all Systems
-			std::vector<System> systems;
+			std::vector<System*> systems;
 	};
 }
 
