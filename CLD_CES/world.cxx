@@ -51,7 +51,7 @@ template <typename T> void World::removeSystem() {
 	for(int i = 0; i < systems.size(); ++i) {
 		if(&typeid(*systems[i]) == &typeid(T)) {
 			//the System was found; erase it and return
-			systems.erase(i);
+			systems.erase(*i);
 			return;
 		}
 	}
@@ -68,7 +68,7 @@ template <typename T> void World::removeSystem() {
 
 void World::systemsInit() {
 	for(int i = 0; i < systems.size(); ++i) 
-		systems[i].init();
+		systems[i]->init(library);
 }
 
 //------------------------------------------------------------------------------
@@ -82,5 +82,5 @@ void World::systemsInit() {
 
 void World::systemsUpdate() {
 	for(int i = 0; i < systems.size(); ++i)
-		systems[i].update();
+		systems[i]->update();
 }
