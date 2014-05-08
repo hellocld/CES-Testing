@@ -44,7 +44,7 @@ namespace CLD_CES {
 			//an entity count index and a simple buffer to place destroyed entity keys in
 			int entity_index = 0;
 			std::vector<int> entity_buffer;
-	}
+	};
 }
 
 #endif
