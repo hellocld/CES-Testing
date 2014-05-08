@@ -30,9 +30,9 @@ void World::addSystem(System* s) {
 		if(&typeid(*systems[i]) == &typeid(*s)) {
 			//the System already exists in systems, so we quit
 			return;
+		} else {
+			systems.push_back(s);
 		}
-	} else {
-		systems.push_back(s);
 	}
 }
 
