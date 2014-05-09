@@ -20,7 +20,7 @@ using namespace CLD_CES;
  * Returns:		none
  */
 
-void System::init(Library* l) {
+void System::init(&Library l) {
 	//the only thing the base System must do is connect to a Library for Component access
 	lib = l;
 }
