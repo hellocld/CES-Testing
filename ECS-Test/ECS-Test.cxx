@@ -6,7 +6,11 @@
  * 			increment each Value value by one during the main loop, and output all the values to the terminal.
  */
 
-#include "..CLD_CES/world.h"
+#include "../CLD_CES/world.h"
+
+#include "Systems/factory.h"
+#include "Systems/incrementValue.h"
+#include "Systems/outputData.h"
 
 int main(int argc, char* argv[]) {
 	//create the World

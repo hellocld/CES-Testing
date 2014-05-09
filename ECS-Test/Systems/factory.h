@@ -8,7 +8,7 @@
 #ifndef FACTORY_H
 #define FACTORY_H
 
-#include "../CLD_CES/system.h"
+#include "../../CLD_CES/system.h"
 
 namespace ECS_Test {
 	class Factory : public CLD_CES::System {

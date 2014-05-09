@@ -7,13 +7,11 @@
 
 #include <vector>
 
-#include "../CLD_CES/system.h"
-
 #include "factory.h"
 
 //the new Components used by the System
-#include "Components/name.h"
-#include "Components/value.h"
+#include "../Components/name.h"
+#include "../Components/value.h"
 
 //the total number of entities init() creates
 const int totalEntities = 5;

@@ -8,7 +8,7 @@
 #ifndef VALUE_H
 #define VALUE_
 
-#include "../CLD-CES/component.h"
+#include "../../CLD-CES/component.h"
 
 namespace ECS_Test {
 	class Value : public CLD_CES::Component {

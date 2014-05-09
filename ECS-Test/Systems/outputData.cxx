@@ -13,8 +13,6 @@
 #include "../Components/name.h"
 #include "../Components/value.h"
 
-#include "../CLD_CES/library.h"
-
 void ECS_Test::OutputData::update() {
 	//create a vector of all entities in the Library
 	std::vector<int> entities = lib.allEntityIDs();

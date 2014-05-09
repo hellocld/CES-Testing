@@ -8,7 +8,7 @@
 #ifndef INCREMENTVALUE_H
 #define INCREMENTVALUE_H
 
-#include "../CLD_CES/system.h"
+#include "../../CLD_CES/system.h"
 
 namespace ECS_Test {
 	class IncrementValue : public CLD_CES::System {
