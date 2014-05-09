@@ -25,9 +25,11 @@ using namespace CLD_CES;
  */
 
 void World::addSystem(System* s) {
+	//a simple iterator for looping through systems
+	std::vector<System*>::iterator i;
 	//we only want one of each System in the systems vector
-	for(int i = 0; i < systems.size(); ++i) {
-		if(&typeid(*systems[i]) == &typeid(*s)) {
+	for(i = systems.begin(); i < systems.end(); ++i) {
+		if(&typeid(*(*i)) == &typeid(*s)) {
 			//the System already exists in systems, so we quit
 			return;
 		} else {
@@ -47,11 +49,13 @@ void World::addSystem(System* s) {
  */
 
 template <typename T> void World::removeSystem() {
+	//a simple iterator for looping through systems
+	std::vector<System*>::iterator i;
 	//loop through systems, checking for a System of type T
-	for(int i = 0; i < systems.size(); ++i) {
-		if(&typeid(*systems[i]) == &typeid(T)) {
+	for(i = systems.begin(); i < systems.end(); ++i){
+		if(&typeid(*(*i)) == &typeid(T)) {
 			//the System was found; erase it and return
-			systems.erase(*i);
+			systems.erase(i);
 			return;
 		}
 	}
@@ -67,7 +71,10 @@ template <typename T> void World::removeSystem() {
  */
 
 void World::systemsInit() {
-	for(int i = 0; i < systems.size(); ++i) 
+	//a simple iterator for looping through systems
+	std::vector<System*>::iterator i;
+	//loop through systems, checking for a System of type T
+	for(i = systems.begin(); i < systems.end(); ++i)
 		systems[i]->init(library);
 }
 
@@ -81,6 +88,9 @@ void World::systemsInit() {
  */
 
 void World::systemsUpdate() {
-	for(int i = 0; i < systems.size(); ++i)
+	//a simple iterator for looping through systems
+	std::vector<System*>::iterator i;
+	//loop through systems, checking for a System of type T
+	for(i = systems.begin(); i < systems.end(); ++i)
 		systems[i]->update();
 }
