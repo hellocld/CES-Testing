@@ -75,7 +75,7 @@ void World::systemsInit() {
 	std::vector<System*>::iterator i;
 	//loop through systems, checking for a System of type T
 	for(i = systems.begin(); i < systems.end(); ++i)
-		systems[i]->init(library);
+		(*i)->init(library);
 }
 
 //------------------------------------------------------------------------------
@@ -92,5 +92,5 @@ void World::systemsUpdate() {
 	std::vector<System*>::iterator i;
 	//loop through systems, checking for a System of type T
 	for(i = systems.begin(); i < systems.end(); ++i)
-		systems[i]->update();
+		(*i)->update();
 }
