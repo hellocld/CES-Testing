@@ -10,7 +10,7 @@
 
 #include <string>
 
-#include "../../CLD-CES/component.h"
+#include "../../CLD_CES/component.h"
 
 namespace ECS_Test {
 	class Name : public CLD_CES::Component {
