@@ -19,6 +19,8 @@
 namespace CLD_CES {
 	class Library {
 		public:
+			Library() {};
+			~Library() = default;
 			//create new entities in the Entity unordered_map
 			int createEntity();
 			bool destroyEntity(int e);
