@@ -15,8 +15,9 @@
 namespace ECS_Test {
 	class Name : public CLD_CES::Component {
 		public:
-			Name() : name(" "){}
-			Name(string s) {name = s;}
+			Name() {name = " ";}
+			Name(std::string s) {name = s;}
+			~Name() = default;
 			std::string name;
 	};
 }
