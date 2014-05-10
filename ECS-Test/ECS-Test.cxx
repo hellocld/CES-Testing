@@ -17,9 +17,9 @@ int main(int argc, char* argv[]) {
 	CLD_CES::World world;
 
 	//add the necessary Systems
-	world.addSystem(new ECS-Test::Factory());
-	world.addSystem(new ECS-Test::IncrementValue());
-	world.addSystem(new ECS-Test::OutputData());
+	world.addSystem(new ECS_Test::Factory());
+	world.addSystem(new ECS_Test::IncrementValue());
+	world.addSystem(new ECS_Test::OutputData());
 
 	//initialize the systems
 	world.systemsInit();
