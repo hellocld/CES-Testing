@@ -12,7 +12,8 @@
 
 namespace ECS_Test {
 	class OutputData : public CLD_CES::System {
-		void update();
+		public:
+			void update();
 	};
 }
 
