@@ -14,6 +14,7 @@ namespace ECS_Test {
 	class Factory : public CLD_CES::System {
 		public:
 			void init(CLD_CES::Library l);
+			void update();
 	};
 }
 

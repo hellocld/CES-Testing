@@ -32,3 +32,7 @@ void ECS_Test::Factory::init(CLD_CES::Library l) {
 		lib->addComponent(entities[i], new ECS_Test::Value(i*10));
 	}
 }
+
+void ECS_Test::Factory::update() {
+	//don't do anything :)
+}
