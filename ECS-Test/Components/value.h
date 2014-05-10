@@ -15,7 +15,6 @@ namespace ECS_Test {
 		public:
 			Value() : value(0) {}
 			Value(int v) {value = v;}
-			~Value() = default;
 			int value;
 	};
 }

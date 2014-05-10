@@ -17,7 +17,6 @@ namespace ECS_Test {
 		public:
 			Name() {name = " ";}
 			Name(std::string s) {name = s;}
-			~Name() = default;
 			std::string name;
 	};
 }
