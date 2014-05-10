@@ -13,7 +13,7 @@
 namespace ECS_Test {
 	class Factory : public CLD_CES::System {
 		public:
-			void init(Library l);
+			void init(CLD_CES::Library l);
 	};
 }
 
