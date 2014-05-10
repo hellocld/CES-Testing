@@ -6,6 +6,7 @@
  */
 
 #include <vector>
+#include <string>
 
 #include "factory.h"
 
@@ -16,7 +17,7 @@
 //the total number of entities init() creates
 const int totalEntities = 5;
 
-void ECS_Test::Factory::init(Library l) {
+void ECS_Test::Factory::init(CLD_CES::Library l) {
 
 	//assign the library to lib using the base class init() function (just in case that gets changed later on)
 	CLD_CES::System::init(l);
@@ -25,9 +26,9 @@ void ECS_Test::Factory::init(Library l) {
 	std::vector<int> entities;
 	for(int i = 0; i < totalEntities; ++i) {
 		//create an entity and push it back into the entities vector
-		entities.push_back(lib.createEntity());
+		entities.push_back(lib->createEntity());
 		//give the entity a Name and Value component
-		lib.addComponent(entities[i], new ECS_Test::Name("entity " + i));
-		lib.addComponent(entities[i], new ECS_Test::Value(i*10));
+		lib->addComponent(entities[i], new ECS_Test::Name("entity " + i));
+		lib->addComponent(entities[i], new ECS_Test::Value(i*10));
 	}
 }
