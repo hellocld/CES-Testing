@@ -17,7 +17,7 @@ void ECS_Test::IncrementValue::update() {
 
 	std::vector<int>::iterator i;
 
-for(i = entities.begin(); i<entities.end(); ++i) {
+	for(i = entities.begin(); i<entities.end(); ++i) {
 		if(lib->hasComponent<ECS_Test::Value>(*i)) {
 			lib->getComponent<ECS_Test::Value>(*i)->value++;
 		}
