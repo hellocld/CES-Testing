@@ -17,18 +17,19 @@ factory.o : factory.cxx factory.h system.h library.h component.h
 	$(exe) $(flags) -c $< -o $(<D)/$@
 
 incrementValue.o : incrementValue.cxx incrementValue.h system.h library.h component.h
-	$(exe) $(flags) -c incrementValue.cxx
+	$(exe) $(flags) -c $< -o $(<D)/$@
 
 outputData.o : outputData.cxx outputData.h system.h library.h component.h
-	$(exe) $(flags) -c outputData.cxx
+	$(exe) $(flags) -c $< -o $(<D)/$@
 
 #compile CLD_CES
 library.o : library.cxx library.h system.h component.h
-	$(exe) $(flags) -c library.cxx
+	$(exe) $(flags) -c $< -o $(<D)/$@
 
 system.o : system.o system.h component.h
-	$(exe) $(flags) -c system.cxx
+	$(exe) $(flags) -c $< -o $(<D)/$@
 
 world.o : world.cxx world.h system.h library.h
-	$(exe) $(flags) -c world.o
+	$(exe) $(flags) -c $< -o $(<D)/$@
+
 
