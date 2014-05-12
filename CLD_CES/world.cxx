@@ -41,29 +41,6 @@ void World::addSystem(System* s) {
 //------------------------------------------------------------------------------
 
 /*
- * Function:		removeSystem()
- * Description:		Removes a System from systems
- * Arguments:
- * 	typename T:	The type of the System you want to remove
- * Returns:		none
- */
-
-template <typename T> void World::removeSystem() {
-	//a simple iterator for looping through systems
-	std::vector<System*>::iterator i;
-	//loop through systems, checking for a System of type T
-	for(i = systems.begin(); i < systems.end(); ++i){
-		if(&typeid(*(*i)) == &typeid(T)) {
-			//the System was found; erase it and return
-			systems.erase(i);
-			return;
-		}
-	}
-}
-
-//------------------------------------------------------------------------------
-
-/*
  * Function:		systemsInit()
  * Description:		Runs the init() function on each System in systems
  * Arguments:		none

@@ -2,7 +2,8 @@
  * Program:		library.h
  * Author:		Chris Langford
  * Date:		2014/05/05
- * Description:		Header file for the Library class in the CLD_CES framework
+ * Description:		Header file for the Library class in the CLD_CES framework - template function
+ * 			definitions included below
  *
  */
 
@@ -47,6 +48,85 @@ namespace CLD_CES {
 			int entity_index = 0;
 			std::vector<int> entity_buffer;
 	};
+}
+
+//---------------------------------------------------------------------------------------
+
+/*
+ * Function:		removeComponent()
+ * Description:		Removes an existing Component from an existing Entity.
+ * Arguments:
+ * 	typename T:	Component type to be removed
+ * 	int e:		Entity ID containing Component of type T
+ * Returns:
+ * 	bool:		True if successful; False if no such Component/Entity
+ */
+
+template <typename T> bool Library::removeComponent(int e) {
+	//check to see if Entity e exists
+	if(entities.count(e) != 0) {
+		//check for the Component
+		if(entities[e].count(&typeid(T)) != 0) {
+			//it exists, so remove the Component
+			entities[e].erase(&typeid(T));
+			return true;
+		} else {
+			//the Component was not found
+			return false;
+		}
+	} else {
+		//ERROR: e is not a valid Entity ID
+		return false;
+	}
+}
+
+//---------------------------------------------------------------------------------------
+
+/*
+ * Function:		getComponent()
+ * Description:		Provides a pointer to a particular Component in a particular Entity
+ * Arguments:
+ * 	typename T:	Component type to find
+ * 	int e:		ID of Entity to search
+ * Returns:
+ * 	T*:		Pointer to Component
+ */
+
+template <typename T> T* Library::getComponent(int e) {
+	if(entities.count(e) != 0) {
+		if(entities[e].count(&typeid(T)) != 0) {
+			//return a pointer to the Component
+			return static_cast<T*>(entities[e][&typeid(T)]);
+		} else {
+			//ERROR: no such Component exists in Entity e
+			return nullptr;
+		}
+	} else {
+		//ERROR: no such Entity exists
+		return nullptr;
+	}
+}
+
+//---------------------------------------------------------------------------------------
+
+/*
+ * Function:		hasComponent()
+ * Description:		Determines if an Entity contains a Component of type T
+ * Arguments:
+ * 	typename T:	Component type to find
+ * 	int e:		ID of Entity to search
+ * Returns:
+ * 	bool:		True if Component is found
+ */
+
+template <typename T> bool Library::hasComponent(int e) {
+	if(entities.count(e) != 0) {
+		if(entities[e].count(&typeid(T)) != 0) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 #endif
