@@ -3,22 +3,22 @@ VPATH = ../CLD_CES:Systems:Components
 exe = g++
 flags = -Wall
 
-cldces = library.o system.o world.o
+cldcesobj = library.o system.o world.o
 
 ecsobj = factory.o incrementValue.o outputData.o 
 
 #put everything together!
-ECS-Test : main.cxx $(ecsobj) $(cldces)
+ECS-Test : main.cxx $(ecsobj) $(cldcesobj)
 	$(exe) $(flags) -o ECS-Test main.cxx $(objects)
 
 #compile the custom systems
-factory.o : factory.cxx factory.h $(cldces)
+factory.o : factory.cxx factory.h system.h library.h component.h
 	$(exe) $(flags) -c factory.o 
 
-incrementValue.o : incrementValue.cxx incrementValue.h $(cldces)
+incrementValue.o : incrementValue.cxx incrementValue.h system.h library.h component.h
 	$(exe) $(flags) -c incrementValue.cxx
 
-outputData.o : outputData.cxx outputData.h ($cldces)
+outputData.o : outputData.cxx outputData.h system.h library.h component.h
 	$(exe) $(flags) -c outputData.cxx
 
 #compile CLD_CES
