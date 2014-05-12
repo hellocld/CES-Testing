@@ -9,6 +9,7 @@
 #include <typeinfo>
 #include <unordered_map>
 #include <vector>
+#include <iostream>
 
 #include "library.h"
 #include "component.h"

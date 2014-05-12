@@ -9,6 +9,7 @@
 #define WORLD_H
 
 #include <vector>
+#include <iostream>
 
 #include "library.h"
 #include "system.h"

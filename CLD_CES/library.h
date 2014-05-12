@@ -12,6 +12,7 @@
 #include <typeinfo>
 #include <unordered_map>
 #include <vector>
+#include <iostream>
 
 #include "component.h"
 
