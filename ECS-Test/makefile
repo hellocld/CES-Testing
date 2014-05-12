@@ -13,7 +13,7 @@ ECS-Test : main.cxx $(ecsobj) $(cldcesobj)
 
 #compile the custom systems
 factory.o : factory.cxx factory.h system.h library.h component.h
-	$(exe) $(flags) -c factory.o 
+	$(exe) $(flags) -c factory.cxx
 
 incrementValue.o : incrementValue.cxx incrementValue.h system.h library.h component.h
 	$(exe) $(flags) -c incrementValue.cxx
