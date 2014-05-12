@@ -1,7 +1,8 @@
-VPATH = ../CLD_CES:Systems:Components
+vpath %.cxx ../CLD_CES ./Systems ./Components
+vpath %.h ../CLD_CES ./Systems ./Components
 
 exe = g++
-flags = -Wall
+flags = -std=c++11 -Wall
 
 cldcesobj = library.o system.o world.o
 
@@ -13,7 +14,7 @@ ECS-Test : main.cxx $(ecsobj) $(cldcesobj)
 
 #compile the custom systems
 factory.o : factory.cxx factory.h system.h library.h component.h
-	$(exe) $(flags) -c factory.cxx
+	$(exe) $(flags) -c $< -o $(<D)/$@
 
 incrementValue.o : incrementValue.cxx incrementValue.h system.h library.h component.h
 	$(exe) $(flags) -c incrementValue.cxx
