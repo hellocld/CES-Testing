@@ -35,6 +35,7 @@ void World::addSystem(System* s) {
 			std::cerr<<"addSystem() WARNING: world already contains a System of type "<<typeid(*s).name()<<std::endl;
 			return;
 		} else {
+			std::cerr<<"addSystem ALERT: adding System "<<typeid(*s).name()<<std::endl;
 			systems.push_back(s);
 		}
 	}
