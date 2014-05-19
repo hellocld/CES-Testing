@@ -9,12 +9,14 @@
 #ifndef SYSTEM_H
 #define SYSTEM_H
 
+#include <iostream>
+
 #include "library.h"
 
 namespace CLD_CES {
 	class System {
 		public:
-			System() {};
+			System() {std::cerr<<"New System Created\n";};
 			~System() = default;
 			//upon initialization ALL Systems must be told what Library they are working with
 			virtual void init(Library l);

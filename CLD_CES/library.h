@@ -19,7 +19,7 @@
 namespace CLD_CES {
 	class Library {
 		public:
-			Library() {};
+			Library() {std::cerr<<"New Library created\n";};
 			~Library() = default;
 			//create new entities in the Entity unordered_map
 			int createEntity();

@@ -9,10 +9,12 @@
 #ifndef COMPONENT_H
 #define COMPONENT_H
 
+#include <iostream>
+
 namespace CLD_CES {
 	class Component {
 		public:
-			Component() {};
+			Component() {std::cerr<<"New Component created\n";};
 			virtual ~Component() = default;
 	};
 }

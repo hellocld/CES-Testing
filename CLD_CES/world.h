@@ -18,7 +18,7 @@ namespace CLD_CES {
 	class World {
 		public:
 			//creating the world will generate a library and a vector for systems
-			World() {};
+			World() {std::cerr<<"New World Created\n";};
 			virtual ~World() = default;
 
 			//add or remove a System to the world
