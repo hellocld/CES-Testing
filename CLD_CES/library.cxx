@@ -44,6 +44,8 @@ int Library::createEntity() {
 		e = entity_buffer.back();
 		entity_buffer.pop_back();
 	}
+	std::cerr<<"createEntity() ALERT: Creating new Entity "<<e<<std::endl;
+
 	return e;
 };
 
@@ -61,6 +63,7 @@ int Library::createEntity() {
 bool Library::destroyEntity(int e) {
 	//look in entities to see if there's a key that matches e
 	if(entities.count(e) != 0) {
+		std::cerr<<"destroyEntity() ALERT: destroying Entity "<<e<<std::endl;
 		//destroy the key and associated value
 		entities.erase(e);
 		//since e is now an unused ID, push it back into entity_buffer for reuse
@@ -69,6 +72,7 @@ bool Library::destroyEntity(int e) {
 		return true;
 	} else {
 		//e was not a valid ID
+		std::cerr<<"destroyEntity() ERROR: "<<e<<" not a valid Entity ID\n";
 		return false;
 	}
 }
@@ -91,13 +95,16 @@ bool Library::addComponent(int e, Component* c) {
 		//make sure the Entity doesn't already contain a Component of c's type
 		if(entities[e].count(&typeid(*c)) != 0) {
 			//ERROR: Entity e has a Component of c's type already
+			std::cerr<<"addComponent() WARNING: Entity "<<e<<" already contains Component of type "<<typeid(*c).name()<<std::endl;
 			return false;
 		} else {
 			//add the Component with it's typeid as the key
+			std::cerr<<"addComponent() ALERT: Adding Component of type "<<typeid(*c).name()<<" to Entity "<<e<<std::endl;
 			entities[e][&typeid(*c)] = c;
 		}
 	} else {
 		//ERROR: e is not a valid Entity ID
+		std::cerr<<"addComponent() ERROR: "<<e<<" not a valid Entity ID\n";
 		return false;
 	}
 }
