@@ -45,7 +45,8 @@ int Library::createEntity() {
 		entity_buffer.pop_back();
 	}
 	std::cerr<<"createEntity() ALERT: Creating new Entity "<<e<<std::endl;
-
+	//create a new entry in entities
+	entities[e] = new std::unordered_map<const std::type_info *, Component *>();
 	return e;
 };
 
