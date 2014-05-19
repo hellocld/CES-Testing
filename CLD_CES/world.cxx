@@ -26,6 +26,9 @@ using namespace CLD_CES;
  */
 
 void World::addSystem(System* s) {
+
+	/*
+	 * DEBUG: This section commented out because it's probably not working correctly
 	//a simple iterator for looping through systems
 	std::vector<System*>::iterator i;
 	//we only want one of each System in the systems vector
@@ -39,6 +42,9 @@ void World::addSystem(System* s) {
 			systems.push_back(s);
 		}
 	}
+	*/
+	std::cerr<<"addSystem() ALERT: adding System "<<typeid(*s).name()<<std::endl;
+	systems.push_back(s);
 }
 
 //------------------------------------------------------------------------------
