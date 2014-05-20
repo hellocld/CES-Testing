@@ -62,7 +62,7 @@ void World::systemsInit() {
 	//loop through systems, checking for a System of type T
 	for(i = systems.begin(); i < systems.end(); ++i) {
 		std::cerr<<"systemsInit() ALERT: initializing system "<<typeid(*i).name()<<std::endl;
-		(*i)->init(library);
+		(*i)->init(&library);
 	}
 }
 
