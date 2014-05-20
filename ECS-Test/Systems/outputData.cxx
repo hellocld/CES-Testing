@@ -21,11 +21,12 @@ void ECS_Test::OutputData::update() {
 	std::vector<int>::iterator i;
 
 	for(i = entities.begin(); i < entities.end(); ++i) {
+		std::cerr<<"Checking Entity "<<*i<<"...\n";
 		if(lib->hasComponent<ECS_Test::Name>(*i) && lib->hasComponent<ECS_Test::Value>(*i)) {
 			//if the Entity has both Components, output their info
 			std::cout<<"Name: "<<lib->getComponent<ECS_Test::Name>(*i)->name<<"\t Value: "<<lib->getComponent<ECS_Test::Value>(*i)->value<<std::endl;
 		}
 	}
 	//just a line to break the multiple outputs of the system
-	std::cout<<"--------------------------------------------------------------------------\n";
+	std::cout<<"ECS_Test::OutputData::update() complete------------------------------------------\n";
 }
