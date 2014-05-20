@@ -10,10 +10,10 @@
 
 #include <string>
 
-#include "../../CLD_CES/component.h"
+#include "../../CLD_ECS/component.h"
 
 namespace ECS_Test {
-	class Name : public CLD_CES::Component {
+	class Name : public CLD_ECS::Component {
 		public:
 			Name() {name = " ";}
 			Name(std::string s) {name = s;}

@@ -6,7 +6,7 @@
  * 			increment each Value value by one during the main loop, and output all the values to the terminal.
  */
 
-#include "../CLD_CES/world.h"
+#include "../CLD_ECS/world.h"
 
 #include "Systems/factory.h"
 #include "Systems/incrementValue.h"
@@ -14,7 +14,7 @@
 
 int main(int argc, char* argv[]) {
 	//create the World
-	CLD_CES::World world;
+	CLD_ECS::World world;
 
 	//add the necessary Systems
 	world.addSystem(new ECS_Test::Factory());

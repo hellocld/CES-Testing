@@ -2,7 +2,7 @@
  * Program:		world.h
  * Author:		Chris Langford
  * Date:		2014/05/05
- * Description:		Header for the World class in the CLD_CES framework
+ * Description:		Header for the World class in the CLD_ECS framework
  */
 
 #ifndef WORLD_H
@@ -14,7 +14,7 @@
 #include "library.h"
 #include "system.h"
 
-namespace CLD_CES {
+namespace CLD_ECS {
 	class World {
 		public:
 			//creating the world will generate a library and a vector for systems

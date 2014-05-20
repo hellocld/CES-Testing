@@ -13,7 +13,7 @@
 #include "library.h"
 #include "system.h"
 
-using namespace CLD_CES;
+using namespace CLD_ECS;
 
 //------------------------------------------------------------------------------
 

@@ -8,7 +8,7 @@
 #include "system.h"
 #include "library.h"
 
-using namespace CLD_CES;
+using namespace CLD_ECS;
 
 //-----------------------------------------------------------------------------
 

@@ -8,10 +8,10 @@
 #ifndef VALUE_H
 #define VALUE_
 
-#include "../../CLD_CES/component.h"
+#include "../../CLD_ECS/component.h"
 
 namespace ECS_Test {
-	class Value : public CLD_CES::Component {
+	class Value : public CLD_ECS::Component {
 		public:
 			Value() : value(0) {}
 			Value(int v) {value = v;}

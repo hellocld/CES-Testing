@@ -2,7 +2,7 @@
  * Program:		library.cxx
  * Author:		Chris Langford
  * Date:		2014/05/06
- * Description:		Definitions for the member functions of the Library class in the CLD_CES framework
+ * Description:		Definitions for the member functions of the Library class in the CLD_ECS framework
  *
  */
 
@@ -14,7 +14,7 @@
 #include "library.h"
 #include "component.h"
 
-using namespace CLD_CES;
+using namespace CLD_ECS;
 
 //---------------------------------------------------------------------------------------
 

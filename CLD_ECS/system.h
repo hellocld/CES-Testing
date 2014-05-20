@@ -2,7 +2,7 @@
  * Program:		system.h
  * Author:		Chris Langford
  * Date:		2014/05/05
- * Description:		Header for the System class, part of the CLD_CES framework
+ * Description:		Header for the System class, part of the CLD_ECS framework
  *
  */
 
@@ -13,7 +13,7 @@
 
 #include "library.h"
 
-namespace CLD_CES {
+namespace CLD_ECS {
 	class System {
 		public:
 			System() {std::cerr<<"New System Created\n";};

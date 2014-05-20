@@ -17,10 +17,10 @@
 //the total number of entities init() creates
 const int totalEntities = 5;
 
-void ECS_Test::Factory::init(CLD_CES::Library* l) {
+void ECS_Test::Factory::init(CLD_ECS::Library* l) {
 
 	//assign the library to lib using the base class init() function (just in case that gets changed later on)
-	CLD_CES::System::init(l);
+	CLD_ECS::System::init(l);
 
 	//create some entities!
 	std::vector<int> entities;

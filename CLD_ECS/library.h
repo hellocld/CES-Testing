@@ -2,7 +2,7 @@
  * Program:		library.h
  * Author:		Chris Langford
  * Date:		2014/05/05
- * Description:		Header file for the Library class in the CLD_CES framework 
+ * Description:		Header file for the Library class in the CLD_ECS framework 
  */
 
 
@@ -16,7 +16,7 @@
 
 #include "component.h"
 
-namespace CLD_CES {
+namespace CLD_ECS {
 	class Library {
 		public:
 			Library() {std::cerr<<"New Library created\n";};
