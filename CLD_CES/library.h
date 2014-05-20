@@ -50,6 +50,12 @@ namespace CLD_CES {
 
 	//the template function definitions
 	#include "library.txx"
+
+	//creating an entity requires a single basic Component, so here's one that every Entity can use
+	class BasicComp : public Component {
+		//doesn't do anything right now; might be worth it to convert this to
+		//a Messaging Component at some point, or some other extremely useful Component
+	};
 }
 
 #endif
