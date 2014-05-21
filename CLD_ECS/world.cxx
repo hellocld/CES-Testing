@@ -30,7 +30,7 @@ void World::addSystem(System* s) {
 	//if systems isn't empty, we need to check it for possibly duplicate entries before adding a new System
 	if(systems.size() != 0) {
 		//a simple iterator for looping through systems
-		std::vector<System*>::iterator i;
+		std::vector<std::unique_ptr<System>>::iterator i;
 		//if a single System of s's type is found, return from the function without adding anything
 		for(i = systems.begin(); i < systems.end(); ++i) {
 			if(&typeid(*(*i)) == &typeid(*s)) {
