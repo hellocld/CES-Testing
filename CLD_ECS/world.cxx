@@ -27,23 +27,20 @@ using namespace CLD_ECS;
  */
 
 void World::addSystem(System* s) {
-
-	/*
-	 * DEBUG: This section commented out because it's probably not working correctly
-	//a simple iterator for looping through systems
-	std::vector<System*>::iterator i;
-	//we only want one of each System in the systems vector
-	for(i = systems.begin(); i < systems.end(); ++i) {
-		if(&typeid(*(*i)) == &typeid(*s)) {
-			//the System already exists in systems, so we quit
-			std::cerr<<"addSystem() WARNING: world already contains a System of type "<<typeid(*s).name()<<std::endl;
-			return;
-		} else {
-			std::cerr<<"addSystem ALERT: adding System "<<typeid(*s).name()<<std::endl;
-			systems.push_back(s);
+	//if systems isn't empty, we need to check it for possibly duplicate entries before adding a new System
+	if(systems.size() != 0) {
+		//a simple iterator for looping through systems
+		std::vector<System*>::iterator i;
+		//if a single System of s's type is found, return from the function without adding anything
+		for(i = systems.begin(); i < systems.end(); ++i) {
+			if(&typeid(*(*i)) == &typeid(*s)) {
+				//the System already exists in systems, so we quit
+				std::cerr<<"addSystem() WARNING: world already contains a System of type "<<typeid(*s).name()<<std::endl;
+				return;
+			}
 		}
 	}
-	*/
+	//if systems is empty or has no Systems of s's type, add the new System
 	std::cerr<<"addSystem() ALERT: adding System "<<typeid(*s).name()<<std::endl;
 	systems.push_back(std::unique_ptr<System>(s));
 }
