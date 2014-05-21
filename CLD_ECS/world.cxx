@@ -8,6 +8,7 @@
 #include <vector>
 #include <typeinfo>
 #include <iostream>
+#include <memory>
 
 #include "world.h"
 #include "library.h"
@@ -44,7 +45,7 @@ void World::addSystem(System* s) {
 	}
 	*/
 	std::cerr<<"addSystem() ALERT: adding System "<<typeid(*s).name()<<std::endl;
-	systems.push_back(s);
+	systems.push_back(std::unique_ptr<System>(s));
 }
 
 //------------------------------------------------------------------------------
@@ -58,7 +59,7 @@ void World::addSystem(System* s) {
 
 void World::systemsInit() {
 	//a simple iterator for looping through systems
-	std::vector<System*>::iterator i;
+	std::vector<std::unique_ptr<System>>::iterator i;
 	//loop through systems, checking for a System of type T
 	for(i = systems.begin(); i < systems.end(); ++i) {
 		std::cerr<<"systemsInit() ALERT: initializing system "<<typeid(*i).name()<<std::endl;
@@ -77,7 +78,7 @@ void World::systemsInit() {
 
 void World::systemsUpdate() {
 	//a simple iterator for looping through systems
-	std::vector<System*>::iterator i;
+	std::vector<std::unique_ptr<System>>::iterator i;
 	//loop through systems, checking for a System of type T
 	for(i = systems.begin(); i < systems.end(); ++i){
 		std::cerr<<"systemsUpdate() ALERT: updating system "<<typeid(*i).name()<<std::endl;

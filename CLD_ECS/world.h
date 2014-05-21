@@ -10,6 +10,7 @@
 
 #include <vector>
 #include <iostream>
+#include <memory>
 
 #include "library.h"
 #include "system.h"
@@ -34,7 +35,7 @@ namespace CLD_ECS {
 			Library library;
 
 			//vector to store all Systems
-			std::vector<System*> systems;
+			std::vector<std::unique_ptr<System>> systems;
 	};
 
 	//include definitions for the template functions
