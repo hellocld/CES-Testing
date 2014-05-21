@@ -28,7 +28,7 @@ void ECS_Test::Factory::init(CLD_ECS::Library* l) {
 		//create an entity and push it back into the entities vector
 		entities.push_back(lib->createEntity());
 		//give the entity a Name and Value component
-		lib->addComponent(entities[i], new ECS_Test::Name("entity " + i));
+		lib->addComponent(entities[i], new ECS_Test::Name("entity " + std::to_string(i)));
 		lib->addComponent(entities[i], new ECS_Test::Value(i*10));
 	}
 }
