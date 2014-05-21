@@ -10,6 +10,7 @@
 #include <unordered_map>
 #include <vector>
 #include <iostream>
+#include <memory>
 
 #include "library.h"
 #include "component.h"
@@ -46,7 +47,7 @@ int Library::createEntity() {
 	}
 	std::cerr<<"createEntity() ALERT: Creating new Entity "<<e<<std::endl;
 	//create a new entry in entities
-	entities[e][&typeid(BasicComp)] = new BasicComp();
+	entities[e][&typeid(BasicComp)].reset(new BasicComp());
 	return e;
 };
 
@@ -101,7 +102,7 @@ bool Library::addComponent(int e, Component* c) {
 		} else {
 			//add the Component with it's typeid as the key
 			std::cerr<<"addComponent() ALERT: Adding Component of type "<<typeid(*c).name()<<" to Entity "<<e<<std::endl;
-			entities[e][&typeid(*c)] = c;
+			entities[e][&typeid(*c)].reset(c);
 		}
 	} else {
 		//ERROR: e is not a valid Entity ID
