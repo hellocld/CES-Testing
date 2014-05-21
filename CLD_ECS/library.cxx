@@ -103,6 +103,7 @@ bool Library::addComponent(int e, Component* c) {
 			//add the Component with it's typeid as the key
 			std::cerr<<"addComponent() ALERT: Adding Component of type "<<typeid(*c).name()<<" to Entity "<<e<<std::endl;
 			entities[e][&typeid(*c)].reset(c);
+			return true;
 		}
 	} else {
 		//ERROR: e is not a valid Entity ID
