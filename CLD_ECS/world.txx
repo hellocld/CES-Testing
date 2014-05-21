@@ -23,10 +23,9 @@ template <typename T> void World::removeSystem() {
 			std::cerr<<"removeSystem() ALERT: removing System "<<typeid(T).name()<<std::endl;
 			systems.erase(i);
 			return;
-		} else {
-			std::cerr<<"removeSystem() ERROR: no system of type "<<typeid(T).name()<<std::endl;
 		}
 	}
+	std::cerr<<"removeSystem() ERROR: no system of type "<<typeid(T).name()<<std::endl;
 }
 
 
