@@ -21,6 +21,7 @@ namespace CLD_ECS {
 			//upon initialization ALL Systems must be told what Library they are working with
 			virtual void init(Library* l);
 			virtual void update() = 0;
+			virtual void shutdown() = 0;
 
 		protected:
 			//reference to the Library in the World containing this system

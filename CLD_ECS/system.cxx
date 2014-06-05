@@ -37,3 +37,16 @@ void System::init(Library* l) {
 void System::update() {
 	//The base System class doesn't do anything - create new Systems that inherit the base to manipulate components
 }
+
+//-----------------------------------------------------------------------------
+
+/*
+ * Function:		shutdown()
+ * Description:		Similar to init(), but normally run after update().
+ * Arguments:		none
+ * Returns:		none
+ */
+
+void System::shutdown() {
+	//The base System class doesn't do anything - create new Systems that inherit the base to manipulate components
+}
