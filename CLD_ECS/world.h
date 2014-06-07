@@ -26,9 +26,10 @@ namespace CLD_ECS {
 			void addSystem(System* s);
 			template <typename T> void removeSystem();
 
-			//run init() or update() on all Systems
+			//run init(), update() or shutdown() on all Systems
 			void systemsInit();
 			void systemsUpdate();
+			void systemsShutdown();
 
 		private:
 			//Library to store all Entities and Components in this World
