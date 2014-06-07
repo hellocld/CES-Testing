@@ -82,3 +82,22 @@ void World::systemsUpdate() {
 		(*i)->update();
 	}
 }
+
+//------------------------------------------------------------------------------
+
+/*
+ * Function:		systemsShutdown()
+ * Description:		Runs the shutdown() function on each System in systems
+ * Arguments:		none
+ * Returns:		none
+ */
+
+void World::systemsShutdown() {
+	//a simple iterator for looping through systems
+	std::vector<std::unique_ptr<System>>::iterator i;
+	//loop through systems, checking for a System of type T
+	for(i = systems.begin(); i < systems.end(); ++i){
+		std::cerr<<"systemsShutdown() ALERT: updating system "<<typeid(*i).name()<<std::endl;
+		(*i)->shutdown();
+	}
+}
