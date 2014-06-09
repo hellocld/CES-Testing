@@ -10,7 +10,7 @@
 #define SYSTEM_H
 
 #include <iostream>
-
+#include <memory>
 #include "library.h"
 
 namespace CLD_ECS {
@@ -18,14 +18,20 @@ namespace CLD_ECS {
 		public:
 			System() {std::cerr<<"New System Created\n";};
 			~System() = default;
-			//upon initialization ALL Systems must be told what Library they are working with
+
+			//init(), update() and shutdown() are all called by their World container via systemsInit(), systemsUpdate() and systemsShutdown()
 			virtual void init() = 0;
 			virtual void update() = 0;
 			virtual void shutdown() = 0;
 
+			//functions to link the System to a Library
+			void linkLibrary(Library* l);
+
+
+
 		protected:
 			//reference to the Library in the World containing this system
-			Library* lib;
+			std::unique_ptr<Library> lib;
 	};
 }
 

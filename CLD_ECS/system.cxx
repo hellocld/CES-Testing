@@ -20,9 +20,8 @@ using namespace CLD_ECS;
  * Returns:		none
  */
 
-void System::init(Library* l) {
-	//the only thing the base System must do is connect to a Library for Component access
-	lib = l;
+void System::init() {
+	//Like update() and shutdown(), init() is virtual and MUST be defined in inheriting Systems
 }
 
 //-----------------------------------------------------------------------------
@@ -35,7 +34,6 @@ void System::init(Library* l) {
  */
 
 void System::update() {
-	//The base System class doesn't do anything - create new Systems that inherit the base to manipulate components
 }
 
 //-----------------------------------------------------------------------------
@@ -48,5 +46,18 @@ void System::update() {
  */
 
 void System::shutdown() {
-	//The base System class doesn't do anything - create new Systems that inherit the base to manipulate components
+}
+
+//-----------------------------------------------------------------------------
+
+/*
+ * Function:		linkLibrary()
+ * Description:		Connects System to a Library (by address)
+ * Arguments:
+ * 	Library& l	address of the Library
+ * Returns:		none
+ */
+
+void System::linkLibrary(Library* l) {
+	lib.reset(l);	
 }

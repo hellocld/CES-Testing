@@ -40,7 +40,9 @@ void World::addSystem(System* s) {
 			}
 		}
 	}
-	//if systems is empty or has no Systems of s's type, add the new System
+	//if systems is empty or has no Systems of s's type, attach the library and add the new System
+	std::cerr<<"addSystem() ALRET: attaching Library to System "<<typeid(*s).name()<<std::endl;
+	s->linkLibrary(&library);
 	std::cerr<<"addSystem() ALERT: adding System "<<typeid(*s).name()<<std::endl;
 	systems.push_back(std::unique_ptr<System>(s));
 }
@@ -60,7 +62,7 @@ void World::systemsInit() {
 	//loop through systems, checking for a System of type T
 	for(i = systems.begin(); i < systems.end(); ++i) {
 		std::cerr<<"systemsInit() ALERT: initializing system "<<typeid(*i).name()<<std::endl;
-		(*i)->init(&library);
+		(*i)->init();
 	}
 }
 
