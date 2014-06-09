@@ -13,6 +13,8 @@
 #include "../Components/name.h"
 #include "../Components/value.h"
 
+void ECS_Test::OutputData::init() {}
+
 void ECS_Test::OutputData::update() {
 	//create a vector of all entities in the Library
 	std::vector<int> entities = lib->allEntityIDs();
@@ -30,3 +32,5 @@ void ECS_Test::OutputData::update() {
 	//just a line to break the multiple outputs of the system
 	std::cout<<"ECS_Test::OutputData::update() complete------------------------------------------\n";
 }
+
+void ECS_Test::OutputData::shutdown() {}

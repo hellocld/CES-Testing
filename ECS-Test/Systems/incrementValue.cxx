@@ -10,6 +10,8 @@
 #include "incrementValue.h"
 #include "../Components/value.h"
 
+void ECS_Test::IncrementValue::init() {}
+
 void ECS_Test::IncrementValue::update() {
 	//iterate through all the Entities in the Library
 	//if an Entity has a component of type Value, add 1 to the value
@@ -23,3 +25,5 @@ void ECS_Test::IncrementValue::update() {
 		}
 	}
 }
+
+void ECS_Test::IncrementValue::shutdown(){}

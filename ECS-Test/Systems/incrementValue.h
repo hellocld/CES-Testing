@@ -13,7 +13,9 @@
 namespace ECS_Test {
 	class IncrementValue : public CLD_ECS::System {
 		public:
+			void init();
 			void update();
+			void shutdown();
 	};
 }
 
