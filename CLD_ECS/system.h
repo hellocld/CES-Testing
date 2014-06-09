@@ -25,7 +25,7 @@ namespace CLD_ECS {
 			virtual void shutdown() = 0;
 
 			//functions to link the System to a Library
-			void linkLibrary(Library* l);
+			void linkLibrary(Library& l);
 
 
 

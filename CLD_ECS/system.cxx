@@ -58,6 +58,6 @@ void System::shutdown() {
  * Returns:		none
  */
 
-void System::linkLibrary(Library* l) {
-	lib.reset(l);	
+void System::linkLibrary(Library& l) {
+	lib.reset(&l);	
 }
