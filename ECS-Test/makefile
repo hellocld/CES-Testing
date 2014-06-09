@@ -2,7 +2,7 @@ vpath %.cxx ../CLD_ECS ./Systems ./Components
 vpath %.h ../CLD_ECS ./Systems ./Components
 
 exe = g++
-flags = -std=c++11 -Wall
+flags = -std=c++11 -Wall -g
 
 cldcesobj = library.o system.o world.o
 
