@@ -30,7 +30,7 @@ void World::addSystem(System* s) {
 	//if systems isn't empty, we need to check it for possibly duplicate entries before adding a new System
 	if(systems.size() != 0) {
 		//a simple iterator for looping through systems
-		std::vector<std::unique_ptr<System>>::iterator i;
+		std::vector<System*>::iterator i;
 		//if a single System of s's type is found, return from the function without adding anything
 		for(i = systems.begin(); i < systems.end(); ++i) {
 			if(&typeid(*(*i)) == &typeid(*s)) {
@@ -44,7 +44,7 @@ void World::addSystem(System* s) {
 	std::cerr<<"addSystem() ALRET: attaching Library to System "<<typeid(*s).name()<<std::endl;
 	s->linkLibrary(library);
 	std::cerr<<"addSystem() ALERT: adding System "<<typeid(*s).name()<<std::endl;
-	systems.push_back(std::unique_ptr<System>(s));
+	systems.push_back(s);
 }
 
 //------------------------------------------------------------------------------
@@ -58,7 +58,7 @@ void World::addSystem(System* s) {
 
 void World::systemsInit() {
 	//a simple iterator for looping through systems
-	std::vector<std::unique_ptr<System>>::iterator i;
+	std::vector<System*>::iterator i;
 	//loop through systems, checking for a System of type T
 	for(i = systems.begin(); i < systems.end(); ++i) {
 		std::cerr<<"systemsInit() ALERT: initializing system "<<typeid(*i).name()<<std::endl;
@@ -77,7 +77,7 @@ void World::systemsInit() {
 
 void World::systemsUpdate() {
 	//a simple iterator for looping through systems
-	std::vector<std::unique_ptr<System>>::iterator i;
+	std::vector<System*>::iterator i;
 	//loop through systems, checking for a System of type T
 	for(i = systems.begin(); i < systems.end(); ++i){
 		std::cerr<<"systemsUpdate() ALERT: updating system "<<typeid(*i).name()<<std::endl;
@@ -96,7 +96,7 @@ void World::systemsUpdate() {
 
 void World::systemsShutdown() {
 	//a simple iterator for looping through systems
-	std::vector<std::unique_ptr<System>>::iterator i;
+	std::vector<System*>::iterator i;
 	//loop through systems, checking for a System of type T
 	for(i = systems.begin(); i < systems.end(); ++i){
 		std::cerr<<"systemsShutdown() ALERT: shutting down system "<<typeid(*i).name()<<std::endl;

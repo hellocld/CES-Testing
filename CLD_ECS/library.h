@@ -13,7 +13,6 @@
 #include <unordered_map>
 #include <vector>
 #include <iostream>
-#include <memory>
 
 #include "component.h"
 
@@ -42,7 +41,7 @@ namespace CLD_ECS {
 		private:
 			//an unordered map that stores all entities
 			//the Value stores an additional unordered map that contains the components of a particular entity
-			std::unordered_map<int, std::unordered_map<const std::type_info *, std::unique_ptr<Component>>> entities;
+			std::unordered_map<int, std::unordered_map<const std::type_info *, Component*>> entities;
 			
 			//an entity count index and a simple buffer to place destroyed entity keys in
 			int entity_index = 0;

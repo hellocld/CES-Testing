@@ -15,7 +15,7 @@
 
 template <typename T> void World::removeSystem() {
 	//a simple iterator for looping through systems
-	std::vector<std::unique_ptr<System>>::iterator i;
+	std::vector<System*>::iterator i;
 	//loop through systems, checking for a System of type T
 	for(i = systems.begin(); i < systems.end(); ++i){
 		if(&typeid(*(*i)) == &typeid(T)) {

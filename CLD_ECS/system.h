@@ -10,7 +10,6 @@
 #define SYSTEM_H
 
 #include <iostream>
-#include <memory>
 #include "library.h"
 
 namespace CLD_ECS {
@@ -31,7 +30,7 @@ namespace CLD_ECS {
 
 		protected:
 			//reference to the Library in the World containing this system
-			std::unique_ptr<Library> lib;
+			Library* lib;
 	};
 }
 

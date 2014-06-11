@@ -53,7 +53,7 @@ template <typename T> T* Library::getComponent(int e) {
 	if(entities.count(e) != 0) {
 		if(entities[e].count(&typeid(T)) != 0) {
 			//return a pointer to the Component
-			return dynamic_cast<T*>(entities[e][&typeid(T)].get());
+			return dynamic_cast<T*>(entities[e][&typeid(T)]);
 		} else {
 			//ERROR: no such Component exists in Entity e
 			std::cerr<<"getComponent() ERROR: could not get Component of type "<<typeid(T).name()<<std::endl;

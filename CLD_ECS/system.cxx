@@ -59,5 +59,5 @@ void System::shutdown() {
  */
 
 void System::linkLibrary(Library& l) {
-	lib.reset(&l);	
+	lib = &l;	
 }
