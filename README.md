@@ -21,9 +21,12 @@ Provided alongside the framework is a basic program that creates a set of Entiti
 1.	Create a new World
 2.	Add three custom Systems to the World (Factory, IncrementValue, and OutputData)
 3.	Initialize the Systems
-	*	While IncrementValue and OutputData only use the default init(), which connects them to World's Library, Factory additionally creates the Entities and attaches Components to each
+	*	Factory creates a set of Entities and attaches Components to each at this point
 4.	Update the Systems
 	*	In the example program this is a simple for() loop that runs 5 times
+4.	Shut down the Systems
+5.	Clean up everything and quit
+	*	This is handled by the framework
 
 This is obviously a very simple example; the true power of this framework is in the extensibility of custom Components and Systems. You can create Sub-Systems to run within Systems, or even place Worlds within Systems for a (theoretically) infinite degree of separation between program elements.
 
