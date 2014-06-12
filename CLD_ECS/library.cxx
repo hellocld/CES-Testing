@@ -19,6 +19,25 @@ using namespace CLD_ECS;
 //---------------------------------------------------------------------------------------
 
 /*
+ * Function:		~Library()
+ * Description:		Deletes all pointers and values in the Library
+ * Arguments:		none
+ * Returns:		none
+ */
+
+Library::~Library() {
+	//we need to loop through everything in entities to remove EVERYTHING allocated in memory, so we'll need a couple iterators
+	for(auto id = entities.begin(); id != entities.end(); ++id) {
+		//now loop through each component
+		for(auto c = id->second.begin(); c != id->second.end(); ++c) {
+			//delete away!
+			delete c->second;
+		}
+	}
+}
+//---------------------------------------------------------------------------------------
+
+/*
  * Function:		createEntity()
  * Description:		Creates a new Entity ID, or recycles an unused one
  * Arguments:		none

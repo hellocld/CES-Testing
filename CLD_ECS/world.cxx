@@ -19,6 +19,22 @@ using namespace CLD_ECS;
 //------------------------------------------------------------------------------
 
 /*
+ * Function:		~World()
+ * Description:		Cleans up all the Systems in dynamic RAM
+ * Arguments:		none
+ * Returns:		none
+ */
+
+World::~World() {
+	//just need to iterate through systems and remove everything
+	for(auto s = systems.begin(); s != systems.end(); ++s) {
+		delete *s;
+	}
+}
+
+//------------------------------------------------------------------------------
+
+/*
  * Function:		addSystem()
  * Description:		Adds a new System to the systems vector
  * Arguments:

@@ -19,7 +19,7 @@ namespace CLD_ECS {
 		public:
 			//creating the world will generate a library and a vector for systems
 			World() {std::cerr<<"New World Created\n";};
-			virtual ~World() = default;
+			virtual ~World();
 
 			//add or remove a System to the world
 			void addSystem(System* s);
