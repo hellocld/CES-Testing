@@ -21,6 +21,7 @@ template <typename T> void World::removeSystem() {
 		if(&typeid(*(*i)) == &typeid(T)) {
 			//the System was found; erase it and return
 			std::cerr<<"removeSystem() ALERT: removing System "<<typeid(T).name()<<std::endl;
+			delete *i;
 			systems.erase(i);
 			return;
 		}

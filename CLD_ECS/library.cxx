@@ -84,6 +84,10 @@ bool Library::destroyEntity(int e) {
 	//look in entities to see if there's a key that matches e
 	if(entities.count(e) != 0) {
 		std::cerr<<"destroyEntity() ALERT: destroying Entity "<<e<<std::endl;
+		//loop through all it's components and delete them
+		for(auto c = entities[e].begin(); c != entities[e].end(); ++c) {
+			delete c->second;
+		}
 		//destroy the key and associated value
 		entities.erase(e);
 		//since e is now an unused ID, push it back into entity_buffer for reuse

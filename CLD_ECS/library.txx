@@ -23,6 +23,7 @@ template <typename T> bool Library::removeComponent(int e) {
 		//check for the Component
 		if(entities[e].count(&typeid(T)) != 0) {
 			//it exists, so remove the Component
+			delete *entities[e][&typeid(T)];
 			entities[e].erase(&typeid(T));
 			return true;
 		} else {
