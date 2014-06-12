@@ -24,6 +24,15 @@ namespace CLD_ECS {
 			//add or remove a System to the world
 			void addSystem(System* s);
 			template <typename T> void removeSystem();
+			
+			//wrapper functions that give World access to it's Library
+			int createEntity(){ return library.createEntity(); };
+			bool destroyEntity(int e){ return library.destroyEntity(e); };
+			bool addComponent(int e, Component* c){ return library.addComponent(e, c); };
+			template <typename T> T* removeComponent(int e){ return library.removeComponent<T>(e); };
+			template <typename T> T* getComponent(int e){ return library.getComponent<T>(e); };
+			template <typename T> bool hasComponent(int e){ return library.hasComponent<T>(e); };
+			std::vector<int> allEntityIDs(){return library.allEntityIDs(); };
 
 			//run init(), update() or shutdown() on all Systems
 			void systemsInit();
