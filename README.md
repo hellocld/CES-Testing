@@ -1,10 +1,10 @@
-CLD-ECS
+cldECS
 =======
-CLD-ECS is a simple, barebones Entity-Component-System framework written in C++. It strives to be the bare minimum in what you need to get off the ground and rolling with your own applications using the ECS approach.
+cldECS is a simple, barebones Entity-Component-System framework written in C++. It strives to be the bare minimum in what you need to get off the ground and rolling with your own applications using the ECS approach.
 
 Parts
 -----
-CLD-ECS is broken into a few basic parts
+cldECS is broken into a few basic parts
 *	**Components**  
 	Simple data structures. Systems read and manipuate these to make things happen. They are stored in a Library, and each new Component is associated to an Entity ID
 *	**Systems**  
