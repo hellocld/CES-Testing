@@ -114,7 +114,7 @@ void World::systemsShutdown() {
 	//a simple iterator for looping through systems
 	std::vector<System*>::iterator i;
 	//loop through systems, checking for a System of type T
-	for(i = systems.begin(); i < systems.end(); ++i){
+	for(i = systems.rbegin(); i < systems.rend(); ++i){
 		std::cerr<<"systemsShutdown() ALERT: shutting down system "<<typeid(*i).name()<<std::endl;
 		(*i)->shutdown();
 	}
