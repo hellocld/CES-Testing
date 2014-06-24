@@ -24,10 +24,10 @@ void ECS_Test::Factory::init() {
 	std::vector<int> entities;
 	for(int i = 0; i < totalEntities; ++i) {
 		//create an entity and push it back into the entities vector
-		entities.push_back(lib->createEntity());
+		entities.push_back(library->createEntity());
 		//give the entity a Name and Value component
-		lib->addComponent(entities[i], new ECS_Test::Name("entity " + std::to_string(i)));
-		lib->addComponent(entities[i], new ECS_Test::Value(i*10));
+		library->addComponent(entities[i], new ECS_Test::Name("entity " + std::to_string(i)));
+		library->addComponent(entities[i], new ECS_Test::Value(i*10));
 	}
 }
 

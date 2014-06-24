@@ -15,13 +15,13 @@ void ECS_Test::IncrementValue::init() {}
 void ECS_Test::IncrementValue::update() {
 	//iterate through all the Entities in the Library
 	//if an Entity has a component of type Value, add 1 to the value
-	std::vector<int> entities = lib->allEntityIDs();
+	std::vector<int> entities = library->allEntityIDs();
 
 	std::vector<int>::iterator i;
 
 	for(i = entities.begin(); i<entities.end(); ++i) {
-		if(lib->hasComponent<ECS_Test::Value>(*i)) {
-			lib->getComponent<ECS_Test::Value>(*i)->value++;
+		if(library->hasComponent<ECS_Test::Value>(*i)) {
+			library->getComponent<ECS_Test::Value>(*i)->value++;
 		}
 	}
 }
