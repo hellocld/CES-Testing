@@ -32,7 +32,7 @@ namespace CLD_ECS {
 
 		protected:
 			//reference to the Library in the World containing this system
-			Library* lib;
+			Library* library;
 	};
 }
 
