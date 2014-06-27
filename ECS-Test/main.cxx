@@ -6,7 +6,7 @@
  * 			increment each Value value by one during the main loop, and output all the values to the terminal.
  */
 
-#include "../CLD_ECS/world.h"
+#include "../world.h"
 
 #include "Systems/factory.h"
 #include "Systems/incrementValue.h"

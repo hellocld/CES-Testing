@@ -8,7 +8,7 @@
 #ifndef OUTPUTDATA_H
 #define OUTPUTDATA_H
 
-#include "../../CLD_ECS/system.h"
+#include "../../system.h"
 
 namespace ECS_Test {
 	class OutputData : public CLD_ECS::System {
