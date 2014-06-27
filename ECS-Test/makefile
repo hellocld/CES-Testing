@@ -1,5 +1,5 @@
-vpath %.cxx ../CLD_ECS ./Systems ./Components
-vpath %.h ../CLD_ECS ./Systems ./Components
+vpath %.cxx ../ ./Systems ./Components
+vpath %.h ../ ./Systems ./Components
 
 exe = g++
 flags = -std=c++11 -Wall -g
