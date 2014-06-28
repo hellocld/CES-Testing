@@ -17,7 +17,7 @@ namespace CLD_ECS {
 		public:
 			System() {std::cerr<<"New System Created\n";};
 			virtual ~System() {
-				lib = nullptr;
+				library = nullptr;
 			};
 
 			//init(), update() and shutdown() are all called by their World container via systemsInit(), systemsUpdate() and systemsShutdown()
