@@ -51,15 +51,12 @@ void World::addSystem(System* s) {
 		for(i = systems.begin(); i < systems.end(); ++i) {
 			if(&typeid(*(*i)) == &typeid(*s)) {
 				//the System already exists in systems, so we quit
-				std::cerr<<"addSystem() WARNING: world already contains a System of type "<<typeid(*s).name()<<std::endl;
 				return;
 			}
 		}
 	}
 	//if systems is empty or has no Systems of s's type, attach the library and add the new System
-	std::cerr<<"addSystem() ALRET: attaching Library to System "<<typeid(*s).name()<<std::endl;
 	s->linkLibrary(library);
-	std::cerr<<"addSystem() ALERT: adding System "<<typeid(*s).name()<<std::endl;
 	systems.push_back(s);
 }
 
@@ -77,7 +74,6 @@ void World::systemsInit() {
 	std::vector<System*>::iterator i;
 	//loop through systems, checking for a System of type T
 	for(i = systems.begin(); i < systems.end(); ++i) {
-		std::cerr<<"systemsInit() ALERT: initializing system "<<typeid(*i).name()<<std::endl;
 		(*i)->init();
 	}
 }
@@ -96,7 +92,6 @@ void World::systemsUpdate() {
 	std::vector<System*>::iterator i;
 	//loop through systems, checking for a System of type T
 	for(i = systems.begin(); i < systems.end(); ++i){
-		std::cerr<<"systemsUpdate() ALERT: updating system "<<typeid(*i).name()<<std::endl;
 		(*i)->update();
 	}
 }
@@ -115,7 +110,6 @@ void World::systemsShutdown() {
 	std::vector<System*>::reverse_iterator i;
 	//loop through systems, checking for a System of type T
 	for(i = systems.rbegin(); i < systems.rend(); ++i){
-		std::cerr<<"systemsShutdown() ALERT: shutting down system "<<typeid(*i).name()<<std::endl;
 		(*i)->shutdown();
 	}
 }

@@ -28,12 +28,10 @@ template <typename T> bool Library::removeComponent(int e) {
 			return true;
 		} else {
 			//the Component was not found
-			std::cerr<<"removeComponent() ERROR: could not find Component of type "<<typeid(T).name()<<std::endl;
 			return false;
 		}
 	} else {
 		//ERROR: e is not a valid Entity ID
-		std::cerr<<"removeComponent() ERROR: "<<e<<" not a valid Entity ID\n"; 
 		return false;
 	}
 }
@@ -57,12 +55,10 @@ template <typename T> T* Library::getComponent(int e) {
 			return dynamic_cast<T*>(entities[e][&typeid(T)]);
 		} else {
 			//ERROR: no such Component exists in Entity e
-			std::cerr<<"getComponent() ERROR: could not get Component of type "<<typeid(T).name()<<std::endl;
 			return nullptr;
 		}
 	} else {
 		//ERROR: no such Entity exists
-		std::cerr<<"removeComponent() ERROR: "<<e<<" not a valid Entity ID\n"; 
 		return nullptr;
 	}
 }
@@ -84,11 +80,9 @@ template <typename T> bool Library::hasComponent(int e) {
 		if(entities[e].count(&typeid(T)) != 0) {
 			return true;
 		} else {
-			std::cerr<<"hasComponent() ERROR: entity has no component of type "<<typeid(T).name()<<std::endl;
 			return false;
 		}
 	}
-	std::cerr<<"hasComponent() ERROR: entity does not exist\n";
 	return false;
 }
 
