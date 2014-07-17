@@ -18,13 +18,6 @@ using namespace CLD_ECS;
 
 //---------------------------------------------------------------------------------------
 
-/*
- * Function:		~Library()
- * Description:		Deletes all pointers and values in the Library
- * Arguments:		none
- * Returns:		none
- */
-
 Library::~Library() {
 	//we need to loop through everything in entities to remove EVERYTHING allocated in memory, so we'll need a couple iterators
 	for(auto id = entities.begin(); id != entities.end(); ++id) {
@@ -37,15 +30,7 @@ Library::~Library() {
 }
 //---------------------------------------------------------------------------------------
 
-/*
- * Function:		createEntity()
- * Description:		Creates a new Entity ID, or recycles an unused one
- * Arguments:		none
- * Returns:		
- * 	int:		New/recycled Entity ID
- */
-
-int Library::createEntity() {
+int Library::CreateEntity() {
 	//temporary storage for the Entity ID
 	int e;
 
@@ -70,16 +55,7 @@ int Library::createEntity() {
 
 //---------------------------------------------------------------------------------------
 
-/*
- * Function:		destroyEntity()
- * Description:		Removes an Entity from the Entities unordered_map and pushes the ID into the entity_buffer
- * Arguments:
- * 	int e:		ID of Entity to remove
- * Returns:
- * 	bool:		True if successful
- */
-
-bool Library::destroyEntity(int e) {
+bool Library::DestroyEntity(int e) {
 	//look in entities to see if there's a key that matches e
 	if(entities.count(e) != 0) {
 		//loop through all it's components and delete them
@@ -100,17 +76,7 @@ bool Library::destroyEntity(int e) {
 
 //---------------------------------------------------------------------------------------
 
-/*
- * Function:		addComponent()
- * Description:		Adds a Component to an existing Entity
- * Arguments:
- * 	int e:		ID of Entity
- * 	Component* c:	Component being added to Entity e
- * Returns:
- * 	bool:		True if successful
- */
-
-bool Library::addComponent(int e, Component* c) {
+bool Library::AddComponent(int e, Component* c) {
 	//check if e is a valid Entity ID
 	if(entities.count(e) != 0) {
 		//make sure the Entity doesn't already contain a Component of c's type
@@ -130,15 +96,7 @@ bool Library::addComponent(int e, Component* c) {
 
 //---------------------------------------------------------------------------------------
 
-/*
- * Function:		allEntityIDs()
- * Description:		Returns a list (vector) of all Entity IDs in the Library
- * Arguments:		none
- * Returns:
- * 	vector<int>:	A list of all Entity IDs in the Library
- */
-
-std::vector<int> Library::allEntityIDs() {
+std::vector<int> Library::AllEntityIDs() {
 	//an empty vector to fill with Entity IDs
 	std::vector<int> id;
 

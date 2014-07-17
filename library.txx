@@ -7,17 +7,7 @@
 
 //---------------------------------------------------------------------------------------
 
-/*
- * Function:		removeComponent()
- * Description:		Removes an existing Component from an existing Entity.
- * Arguments:
- * 	typename T:	Component type to be removed
- * 	int e:		Entity ID containing Component of type T
- * Returns:
- * 	bool:		True if successful; False if no such Component/Entity
- */
-
-template <typename T> bool Library::removeComponent(int e) {
+template <typename T> bool Library::RemoveComponent(int e) {
 	//check to see if Entity e exists
 	if(entities.count(e) != 0) {
 		//check for the Component
@@ -38,17 +28,7 @@ template <typename T> bool Library::removeComponent(int e) {
 
 //---------------------------------------------------------------------------------------
 
-/*
- * Function:		getComponent()
- * Description:		Provides a pointer to a particular Component in a particular Entity
- * Arguments:
- * 	typename T:	Component type to find
- * 	int e:		ID of Entity to search
- * Returns:
- * 	T*:		Pointer to Component
- */
-
-template <typename T> T* Library::getComponent(int e) {
+template <typename T> T* Library::GetComponent(int e) {
 	if(entities.count(e) != 0) {
 		if(entities[e].count(&typeid(T)) != 0) {
 			//return a pointer to the Component
@@ -65,17 +45,7 @@ template <typename T> T* Library::getComponent(int e) {
 
 //---------------------------------------------------------------------------------------
 
-/*
- * Function:		hasComponent()
- * Description:		Determines if an Entity contains a Component of type T
- * Arguments:
- * 	typename T:	Component type to find
- * 	int e:		ID of Entity to search
- * Returns:
- * 	bool:		True if Component is found
- */
-
-template <typename T> bool Library::hasComponent(int e) {
+template <typename T> bool Library::HasComponent(int e) {
 	if(entities.count(e) != 0) {
 		if(entities[e].count(&typeid(T)) != 0) {
 			return true;
@@ -85,5 +55,3 @@ template <typename T> bool Library::hasComponent(int e) {
 	}
 	return false;
 }
-
-
