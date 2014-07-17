@@ -6,8 +6,8 @@
  */
 
 
-#ifndef LIBRARY_H
-#define LIBRARY_H
+#ifndef CLD_ECS_LIBRARY_H_INCLUDED
+#define CLD_ECS_LIBRARY_H_INCLUDED
 
 #include <typeinfo>
 #include <unordered_map>
