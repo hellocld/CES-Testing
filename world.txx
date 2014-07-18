@@ -5,15 +5,7 @@
  * Description:		Template function definitions for the World class
  */
 
-/*
- * Function:		removeSystem()
- * Description:		Removes a System from systems
- * Arguments:
- * 	typename T:	The type of the System you want to remove
- * Returns:		none
- */
-
-template <typename T> void World::removeSystem() {
+template <typename T> bool World::RemoveSystem() {
 	//a simple iterator for looping through systems
 	std::vector<System*>::iterator i;
 	//loop through systems, checking for a System of type T
@@ -22,9 +14,11 @@ template <typename T> void World::removeSystem() {
 			//the System was found; erase it and return
 			delete *i;
 			systems.erase(i);
-			return;
+			return true;
 		}
 	}
+	//the System was not found
+	return false;
 }
 
 

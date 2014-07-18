@@ -7,8 +7,6 @@
 
 #include <vector>
 #include <typeinfo>
-#include <iostream>
-#include <memory>
 
 #include "world.h"
 #include "library.h"
@@ -17,13 +15,6 @@
 using namespace CLD_ECS;
 
 //------------------------------------------------------------------------------
-
-/*
- * Function:		~World()
- * Description:		Cleans up all the Systems in dynamic RAM
- * Arguments:		none
- * Returns:		none
- */
 
 World::~World() {
 	//just need to iterate through systems and remove everything
@@ -34,15 +25,7 @@ World::~World() {
 
 //------------------------------------------------------------------------------
 
-/*
- * Function:		addSystem()
- * Description:		Adds a new System to the systems vector
- * Arguments:
- * 	System* s:	A new System
- * Returns:		none
- */
-
-void World::addSystem(System* s) {
+bool World::AddSystem(System* s) {
 	//if systems isn't empty, we need to check it for possibly duplicate entries before adding a new System
 	if(systems.size() != 0) {
 		//a simple iterator for looping through systems
@@ -51,65 +34,45 @@ void World::addSystem(System* s) {
 		for(i = systems.begin(); i < systems.end(); ++i) {
 			if(&typeid(*(*i)) == &typeid(*s)) {
 				//the System already exists in systems, so we quit
-				return;
+				return false;
 			}
 		}
 	}
 	//if systems is empty or has no Systems of s's type, attach the library and add the new System
-	s->linkLibrary(library);
+	s->LinkLibrary(library);
 	systems.push_back(s);
+	return true;
 }
 
 //------------------------------------------------------------------------------
 
-/*
- * Function:		systemsInit()
- * Description:		Runs the init() function on each System in systems
- * Arguments:		none
- * Returns:		none
- */
-
-void World::systemsInit() {
+void World::SystemsInit() {
 	//a simple iterator for looping through systems
 	std::vector<System*>::iterator i;
 	//loop through systems, checking for a System of type T
 	for(i = systems.begin(); i < systems.end(); ++i) {
-		(*i)->init();
+		(*i)->Init();
 	}
 }
 
 //------------------------------------------------------------------------------
 
-/*
- * Function:		systemsUpdate()
- * Description:		Runs the update() function on each System in systems
- * Arguments:		none
- * Returns:		none
- */
-
-void World::systemsUpdate() {
+void World::SystemsUpdate() {
 	//a simple iterator for looping through systems
 	std::vector<System*>::iterator i;
 	//loop through systems, checking for a System of type T
 	for(i = systems.begin(); i < systems.end(); ++i){
-		(*i)->update();
+		(*i)->Update();
 	}
 }
 
 //------------------------------------------------------------------------------
 
-/*
- * Function:		systemsShutdown()
- * Description:		Runs the shutdown() function on each System in systems
- * Arguments:		none
- * Returns:		none
- */
-
-void World::systemsShutdown() {
+void World::SystemsShutdown() {
 	//a simple iterator for looping through systems
 	std::vector<System*>::reverse_iterator i;
 	//loop through systems, checking for a System of type T
 	for(i = systems.rbegin(); i < systems.rend(); ++i){
-		(*i)->shutdown();
+		(*i)->Shutdown();
 	}
 }
