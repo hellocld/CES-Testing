@@ -1,8 +1,27 @@
 /*
- * Program:		world.h
- * Author:		Chris Langford
- * Date:		2014/05/05
- * Description:		Header for the World class in the CLD_ECS framework
+ * world.h -- header for the World class, a part of CLD-ECS
+ * version 1.0, July 22nd, 2014
+ *
+ * Copyright (c) 2014 cld
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty. In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ *
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ *
+ *    1. The origin of this software must not be misrepresented; you must not
+ *    claim that you wrote the original software. If you use this software
+ *    in a product, an acknowledgment in the product documentation would be
+ *    appreciated but is not required.
+ *
+ *    2. Altered source versions must be plainly marked as such, and must not be
+ *    misrepresented as being the original software.
+ *
+ *    3. This notice may not be removed or altered from any source
+ *    distribution.
  */
 
 #ifndef CLD_ECS_WORLD_H_INCLUDED
@@ -24,7 +43,13 @@ namespace CLD_ECS {
 	class World {
 		public:
 			//! The World destructor
-			virtual ~World();
+			virtual ~World(){
+				//just need to iterate through systems and remove everything
+				for(auto s = systems.begin(); s != systems.end(); ++s) {
+					delete *s;
+				}
+			}
+
 
 			//! Adds a new System to the World
 			/*!
@@ -41,7 +66,24 @@ namespace CLD_ECS {
 			 * \return True if System was added successfully
 			 * \sa RemoveSystem()
 			 */
-			bool AddSystem(System* s);
+			bool AddSystem(System* s){
+				//if systems isn't empty, we need to check it for possibly duplicate entries before adding a new System
+				if(systems.size() != 0) {
+					//a simple iterator for looping through systems
+					std::vector<System*>::iterator i;
+					//if a single System of s's type is found, return from the function without adding anything
+					for(i = systems.begin(); i < systems.end(); ++i) {
+						if(&typeid(*(*i)) == &typeid(*s)) {
+							//the System already exists in systems, so we quit
+							return false;
+						}
+					}
+				}
+				//if systems is empty or has no Systems of s's type, attach the library and add the new System
+				s->LinkLibrary(library);
+				systems.push_back(s);
+				return true;
+			}
 
 			//! Removes a System from the World
 			/*!
@@ -54,8 +96,22 @@ namespace CLD_ECS {
 			 * \return True of System was removed successfully
 			 * \sa AddSystem()
 			 */
-			template <typename T> bool RemoveSystem();
-			
+			template <typename T> bool RemoveSystem(){
+				//a simple iterator for looping through systems
+				std::vector<System*>::iterator i;
+				//loop through systems, checking for a System of type T
+				for(i = systems.begin(); i < systems.end(); ++i){
+					if(&typeid(*(*i)) == &typeid(T)) {
+						//the System was found; erase it and return
+						delete *i;
+						systems.erase(i);
+						return true;
+					}
+				}
+				//the System was not found
+				return false;
+			}
+
 			//! Creates a new Entity
 			/*!
 			 * Adds a new Entity to entities and returns the Entity's 
@@ -132,21 +188,44 @@ namespace CLD_ECS {
 			 * in the order in which they were added.
 			 * \sa SystemsUpdate(), SystemsShutdown()
 			 */
-			void SystemsInit();
+			void SystemsInit(){
+				//a simple iterator for looping through systems
+				std::vector<System*>::iterator i;
+				//loop through systems, checking for a System of type T
+				for(i = systems.begin(); i < systems.end(); ++i) {
+					(*i)->Init();
+				}
+			}
+
 			//! Runs System::Update() on all Systems in systems
 			/*!
 			 * Runs System::Update() on each System added to systems,
 			 * in the order in which they were added.
 			 * \sa SystemsInit(), SystemsShutdown()
 			 */
-			void SystemsUpdate();
+			void SystemsUpdate(){
+				//a simple iterator for looping through systems
+				std::vector<System*>::iterator i;
+				//loop through systems, checking for a System of type T
+				for(i = systems.begin(); i < systems.end(); ++i){
+					(*i)->Update();
+				}
+			}
+
 			//! Runs System::Shutdown() on all Systems in systems
 			/*!
 			 * Runs System::Shutdown() on each System added to
 			 * systems, in reverse order from which they were added.
 			 * \sa SystemsInit(), SystemsUpdate()
 			 */
-			void SystemsShutdown();
+			void SystemsShutdown(){
+				//a simple iterator for looping through systems
+				std::vector<System*>::reverse_iterator i;
+				//loop through systems, checking for a System of type T
+				for(i = systems.rbegin(); i < systems.rend(); ++i){
+					(*i)->Shutdown();
+				}
+			}
 
 		private:
 			//Library to store all Entities and Components in this World
@@ -155,9 +234,6 @@ namespace CLD_ECS {
 			//vector to store all Systems
 			std::vector<System*> systems;
 	};
-
-	//include definitions for the template functions
-	#include "world.txx"
 }
 
 #endif
