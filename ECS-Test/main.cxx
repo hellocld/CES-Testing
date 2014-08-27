@@ -28,6 +28,15 @@ int main(int argc, char* argv[]) {
 	for(int i = 0; i < 5; ++i) {
 		world.SystemsUpdate();
 	};
+	
+	//remove some entities because reasons
+	world.DestroyEntity(1);
+
+	//loop through the update functions a few times
+	for(int i = 0; i < 5; ++i) {
+		world.SystemsUpdate();
+	};
+	
 
 	world.SystemsShutdown();
 
