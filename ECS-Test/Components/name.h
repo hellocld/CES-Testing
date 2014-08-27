@@ -5,8 +5,8 @@
  * Description:		Component for ECS-Test. Stores a name string
  */
 
-#ifndef NAME_H
-#define NAME_H
+#ifndef ECS_TEST_COMPONENT_NAME_H
+#define ECS_TEST_COMPONENT_NAME_H
 
 #include <string>
 

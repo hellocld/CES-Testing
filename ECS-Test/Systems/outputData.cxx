@@ -13,24 +13,24 @@
 #include "../Components/name.h"
 #include "../Components/value.h"
 
-void ECS_Test::OutputData::init() {}
+void ECS_Test::OutputData::Init() {}
 
-void ECS_Test::OutputData::update() {
+void ECS_Test::OutputData::Update() {
 	//create a vector of all entities in the Library
-	std::vector<int> entities = library->allEntityIDs();
+	std::vector<int> entities = library->GetEntityIDs();
 
 	//an iterator to search through entities
 	std::vector<int>::iterator i;
 
 	for(i = entities.begin(); i < entities.end(); ++i) {
 		std::cerr<<"Checking Entity "<<*i<<"...\n";
-		if(library->hasComponent<ECS_Test::Name>(*i) && library->hasComponent<ECS_Test::Value>(*i)) {
+		if(library->HasComponent<ECS_Test::Name>(*i) && library->HasComponent<ECS_Test::Value>(*i)) {
 			//if the Entity has both Components, output their info
-			std::cout<<"Name: "<<library->getComponent<ECS_Test::Name>(*i)->name<<"\t Value: "<<library->getComponent<ECS_Test::Value>(*i)->value<<std::endl;
+			std::cout<<"Name: "<<library->GetComponent<ECS_Test::Name>(*i)->name<<"\t Value: "<<library->GetComponent<ECS_Test::Value>(*i)->value<<std::endl;
 		}
 	}
 	//just a line to break the multiple outputs of the system
 	std::cout<<"ECS_Test::OutputData::update() complete------------------------------------------\n";
 }
 
-void ECS_Test::OutputData::shutdown() {}
+void ECS_Test::OutputData::Shutdown() {}

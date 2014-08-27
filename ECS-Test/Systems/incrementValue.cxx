@@ -10,20 +10,20 @@
 #include "incrementValue.h"
 #include "../Components/value.h"
 
-void ECS_Test::IncrementValue::init() {}
+void ECS_Test::IncrementValue::Init() {}
 
-void ECS_Test::IncrementValue::update() {
+void ECS_Test::IncrementValue::Update() {
 	//iterate through all the Entities in the Library
 	//if an Entity has a component of type Value, add 1 to the value
-	std::vector<int> entities = library->allEntityIDs();
+	std::vector<int> entities = library->GetEntityIDs();
 
 	std::vector<int>::iterator i;
 
 	for(i = entities.begin(); i<entities.end(); ++i) {
-		if(library->hasComponent<ECS_Test::Value>(*i)) {
-			library->getComponent<ECS_Test::Value>(*i)->value++;
+		if(library->HasComponent<ECS_Test::Value>(*i)) {
+			library->GetComponent<ECS_Test::Value>(*i)->value++;
 		}
 	}
 }
 
-void ECS_Test::IncrementValue::shutdown(){}
+void ECS_Test::IncrementValue::Shutdown(){}

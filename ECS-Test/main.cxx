@@ -17,19 +17,19 @@ int main(int argc, char* argv[]) {
 	CLD_ECS::World world;
 
 	//add the necessary Systems
-	world.addSystem(new ECS_Test::Factory());
-	world.addSystem(new ECS_Test::IncrementValue());
-	world.addSystem(new ECS_Test::OutputData());
+	world.AddSystem(new ECS_Test::Factory());
+	world.AddSystem(new ECS_Test::IncrementValue());
+	world.AddSystem(new ECS_Test::OutputData());
 
 	//initialize the systems
-	world.systemsInit();
+	world.SystemsInit();
 
 	//loop through the update functions a few times
 	for(int i = 0; i < 5; ++i) {
-		world.systemsUpdate();
+		world.SystemsUpdate();
 	};
 
-	world.systemsShutdown();
+	world.SystemsShutdown();
 
 	return 0;
 }

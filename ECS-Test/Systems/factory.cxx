@@ -17,24 +17,24 @@
 //the total number of entities init() creates
 const int totalEntities = 5;
 
-void ECS_Test::Factory::init() {
+void ECS_Test::Factory::Init() {
 
 
 	//create some entities!
 	std::vector<int> entities;
 	for(int i = 0; i < totalEntities; ++i) {
 		//create an entity and push it back into the entities vector
-		entities.push_back(library->createEntity());
+		entities.push_back(library->CreateEntity());
 		//give the entity a Name and Value component
-		library->addComponent(entities[i], new ECS_Test::Name("entity " + std::to_string(i)));
-		library->addComponent(entities[i], new ECS_Test::Value(i*10));
+		library->AddComponent(entities[i], new ECS_Test::Name("entity " + std::to_string(i)));
+		library->AddComponent(entities[i], new ECS_Test::Value(i*10));
 	}
 }
 
-void ECS_Test::Factory::update() {
+void ECS_Test::Factory::Update() {
 	//don't do anything :)
 }
 
-void ECS_Test::Factory::shutdown() {
+void ECS_Test::Factory::Shutdown() {
 	//nada
 }

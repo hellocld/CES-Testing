@@ -5,8 +5,8 @@
  * Description:		Component for ECS-Test. Stores an integer value
  */
 
-#ifndef VALUE_H
-#define VALUE_
+#ifndef ECS_TEST_COMPONENT_VALUE_H
+#define ECS_TEST_COMPONENT_VALUE_H
 
 #include "../../component.h"
 

@@ -5,17 +5,17 @@
  * Description:		Header for the IncrementValue class
  */
 
-#ifndef INCREMENTVALUE_H
-#define INCREMENTVALUE_H
+#ifndef ECS_TEST_SYSTEM_INCREMENTVALUE_H
+#define ECS_TEST_SYSTEM_INCREMENTVALUE_H
 
 #include "../../system.h"
 
 namespace ECS_Test {
 	class IncrementValue : public CLD_ECS::System {
 		public:
-			void init();
-			void update();
-			void shutdown();
+			void Init();
+			void Update();
+			void Shutdown();
 	};
 }
 
