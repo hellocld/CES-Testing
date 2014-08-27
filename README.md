@@ -1,4 +1,4 @@
-**HEADS UP**: The wiki documentation is out of date! I'll have it fixed up soon; in the meantime, you can build the documentation via doxygen.
+
 
 ![cldECS Logo](http://cldecs.hellocld.com/gfx/cldECS-logo.png)
 
@@ -6,11 +6,4 @@ cldECS is a simple Entity-Component System framework. It's a bit of a pet projec
 * I had a lot of fun making this framework
 * I think it’s actually pretty useful
 
-You can peruse the [wiki](https://github.com/hellocld/CLD-ECS/wiki/Home) for more information on how to use it, or visit [cldecs.hellocld.com](http://cldecs.hellocld.com).
-
-## Documentation
-* [Entities](https://github.com/hellocld/CLD-ECS/wiki/Entities)
-* [Components](https://github.com/hellocld/CLD-ECS/wiki/Components)
-* [Systems](https://github.com/hellocld/CLD-ECS/wiki/Systems)
-* [Libraries](https://github.com/hellocld/CLD-ECS/wiki/Libraries)
-* [Worlds](https://github.com/hellocld/CLD-ECS/wiki/Worlds)
+You can build the latest documentation from the source with Doxygen.
