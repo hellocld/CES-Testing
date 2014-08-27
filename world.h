@@ -67,11 +67,13 @@ namespace CLD_ECS {
 			 * \sa RemoveSystem()
 			 */
 			bool AddSystem(System* s){
-				//if systems isn't empty, we need to check it for possibly duplicate entries before adding a new System
+				//if systems isn't empty, we need to check it for possibly duplicate 
+				//entries before adding a new System
 				if(systems.size() != 0) {
 					//a simple iterator for looping through systems
 					std::vector<System*>::iterator i;
-					//if a single System of s's type is found, return from the function without adding anything
+					//if a single System of s's type is found, return from the function 
+					//without adding anything
 					for(i = systems.begin(); i < systems.end(); ++i) {
 						if(&typeid(*(*i)) == &typeid(*s)) {
 							//the System already exists in systems, so we quit
@@ -79,7 +81,8 @@ namespace CLD_ECS {
 						}
 					}
 				}
-				//if systems is empty or has no Systems of s's type, attach the library and add the new System
+				//if systems is empty or has no Systems of s's type, attach the library 
+				//and add the new System
 				s->LinkLibrary(library);
 				systems.push_back(s);
 				return true;

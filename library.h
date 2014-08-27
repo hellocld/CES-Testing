@@ -35,10 +35,11 @@
 #include "component.h"
 
 namespace CLD_ECS {
-	//creating an entity requires a single basic Component, so here's one that every Entity can use
+	//creating an entity requires a single basic Component, 
+	//so here's one that every Entity can use
 	class BasicComp : public Component {
 		//doesn't do anything right now; might be worth it to convert this to
-		//a Messaging Component at some point, or some other extremely useful Component
+		//a Messaging Component at some point, or some other Component
 	};
 	
 	//! The Library class
@@ -58,7 +59,8 @@ namespace CLD_ECS {
 			 * stored, removing them from the free store.
 			 */
 			~Library(){
-				//we need to loop through everything in entities to remove EVERYTHING allocated in memory, so we'll need a couple iterators
+				//we need to loop through everything in entities to remove EVERYTHING 
+				//allocated in memory, so we'll need a couple iterators
 				for(auto id = entities.begin(); id != entities.end(); ++id) {
 					//now loop through each component
 					for(auto c = id->second.begin(); c != id->second.end(); ++c) {
